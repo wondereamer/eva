@@ -14,7 +14,7 @@ import sys
 
 
 
-def corr_value(df,end,lookback=12):
+def corr_value(df,end,lookback=1):
     try:
         strp_end = datetime.datetime.strptime(end, "%Y-%m-%d")
         strp_begin = strp_end - DateOffset(months=lookback)
@@ -77,6 +77,23 @@ def correlation_analysis(data1, data2, start_dt, end_dt,peroids='M',plot=False):
     https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases
     return:
         返回一个列表，每个元素为一个四元组（时间，皮尔逊相关系数，data1_value,data2_value）
+        
+    分析两个时序数据在某个时间段的相关性
+    Parameters
+    ----------
+    data1 : ([datetime], [float])
+    数据元组1，包含时间和数值数组。 data2 : ([datetime], [float]) 数据元组2，包含时间和数值数组。
+     start_dt : str
+    开始时间
+    end_dt : str
+    介绍时间
+    period: str
+    ⽐比对单位，取值week, month, quarter, year
+     Returns
+     -------
+     correlation : ([datetime], [float], float)
+    不不同时间段的相关性
+"""
     '''
     if not end_dt:
         end_dt = datetime.datetime.strftime(datetime.date.today()-datetime.timedelta(days=1), "%Y-%m-%d")
@@ -123,5 +140,5 @@ if __name__ == "__main__":
     
     data2 = df[['date','close']].values.tolist()
     
-    correlation_analysis(data1,data2,'1999-12-05','2001-01-01','M')
+    correlation_analysis(data1,data2,'1999-12-05','2001-01-01','M',plot=True)
 

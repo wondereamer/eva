@@ -18,7 +18,7 @@ correlation_analysis = correlation_analysis
 extract_economic_news = extract_economic_news
 
 model_path = os.path.join(root_dir,'model','model.h5')
-def predict(data):
+def model_precict(data):
     """
     预测美元的走势，使用到的数据和特征 9个特征
     '开盘价(元)', '最高价(元)', '最低价(元)', '收盘价(元)' ==>DollarIndex.xlsx

@@ -103,3 +103,4 @@ logdir
 preprocessed
 results
 data/*
+*.xlsx

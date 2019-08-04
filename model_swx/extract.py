@@ -31,6 +31,21 @@ def read_df(path = file_path):
 
 
 def extract_economic_news(title, text):
+    """ 
+    从trading economics等信息中抽取预期数据。 2 Parameters
+    ----------
+    title : str
+    新闻标题
+    text : str
+    机构消息
+                Returns
+              -------
+    info : dict {
+    // 如果⽂文本出没有相关信息，⽆无需给出字段。
+    "market expectation”: "above"/"below"/"equal" 
+    "future": "up"/"down"/"ramain"
+    } 
+    """
     content = title +' '+ text 
     label = 'no match'
     p = re.compile('market expectati.*? |market consensus')
